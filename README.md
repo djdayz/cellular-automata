@@ -55,67 +55,87 @@ When running in **Spyder**, these are defined inside `main()` using:
 args = ap.parse_args([...])
 ```
 
-General Arguments
-Argument	Description	Default
---mode	Simulation mode (animate, phase, varcut, immunity)	animate
---L	Lattice size	50
---seed	Random seed	None
-Initial Condition Arguments
+## General Arguments
 
-These define the initial fractions of states.
+| Argument | Description | Default |
+|--------|-------------|--------|
+| `--mode` | Simulation mode (`animate`, `phase`, `varcut`, `immunity`) | `animate` |
+| `--L` | Lattice size | `50` |
+| `--seed` | Random seed | `None` |
 
-Argument	Description	Default
---initS	Initial fraction susceptible	0.90
---initI	Initial fraction infected	0.05
---initR	Initial fraction recovered	0.05
-Animation Parameters
+---
 
-Used when --mode animate.
+## Initial Condition Arguments
 
-Argument	Description	Default
---pSI	Probability S → I	0.4
---pIR	Probability I → R	0.5
---pRS	Probability R → S	0.5
---sweeps	Number of simulation sweeps	1000
---every	Plot update frequency	1
---fIm	Fraction permanently immune	0.0
-Phase Diagram Parameters
+These define the initial fractions of sites in each state.
 
-Used when --mode phase.
+| Argument | Description | Default |
+|--------|-------------|--------|
+| `--initS` | Initial fraction susceptible | `0.90` |
+| `--initI` | Initial fraction infected | `0.05` |
+| `--initR` | Initial fraction recovered | `0.05` |
 
-Argument	Description	Default
---pIR_fixed	Fixed recovery probability	0.5
---pSImin	Minimum pSI value	0.0
---pSImax	Maximum pSI value	1.0
---pRSmin	Minimum pRS value	0.0
---pRSmax	Maximum pRS value	1.0
---step	Parameter grid spacing	0.01
---equil	Equilibration sweeps	1000
---meas	Measurement sweeps	1000
---out	Output plot filename	out.png
-Variance Cut Parameters
+---
 
-Used when --mode varcut.
+## Animation Parameters
 
-Argument	Description	Default
---pRS_fixed	Fixed pRS value	0.5
---pSIa	Minimum pSI value	0.2
---pSIb	Maximum pSI value	0.5
---total	Total sweeps for measurement	20000
---block	Block size for error estimation	400
+Used when `--mode animate`.
 
-Error bars are estimated using the block averaging method.
+| Argument | Description | Default |
+|--------|-------------|--------|
+| `--pSI` | Probability of transition S → I | `0.4` |
+| `--pIR` | Probability of transition I → R | `0.5` |
+| `--pRS` | Probability of transition R → S | `0.5` |
+| `--sweeps` | Number of simulation sweeps | `1000` |
+| `--every` | Plot update frequency | `1` |
+| `--fIm` | Fraction of permanently immune sites | `0.0` |
 
-Immunity Scan Parameters
+---
 
-Used when --mode immunity.
+## Phase Diagram Parameters
 
-Argument	Description	Default
---p	Probability for all transitions (pSI = pIR = pRS)	0.5
---fmin	Minimum immune fraction	0.0
---fmax	Maximum immune fraction	0.8
---step	Step size in immunity fraction	0.01
-Output Files
+Used when `--mode phase`.
+
+| Argument | Description | Default |
+|--------|-------------|--------|
+| `--pIR_fixed` | Fixed value of pIR | `0.5` |
+| `--pSImin` | Minimum value of pSI | `0.0` |
+| `--pSImax` | Maximum value of pSI | `1.0` |
+| `--pRSmin` | Minimum value of pRS | `0.0` |
+| `--pRSmax` | Maximum value of pRS | `1.0` |
+| `--step` | Parameter step size | `0.01` |
+| `--equil` | Number of equilibration sweeps | `1000` |
+| `--meas` | Number of measurement sweeps | `1000` |
+| `--out` | Output plot filename | `out.png` |
+
+---
+
+## Variance Cut Parameters
+
+Used when `--mode varcut`.
+
+| Argument | Description | Default |
+|--------|-------------|--------|
+| `--pRS_fixed` | Fixed value of pRS | `0.5` |
+| `--pSIa` | Minimum pSI value | `0.2` |
+| `--pSIb` | Maximum pSI value | `0.5` |
+| `--total` | Total measurement sweeps | `20000` |
+| `--block` | Block size used for error bar calculation | `400` |
+
+Error bars are estimated using block averaging.
+
+---
+
+## Immunity Scan Parameters
+
+Used when `--mode immunity`.
+
+| Argument | Description | Default |
+|--------|-------------|--------|
+| `--p` | Transition probability (pSI = pIR = pRS = p) | `0.5` |
+| `--fmin` | Minimum immune fraction | `0.0` |
+| `--fmax` | Maximum immune fraction | `0.8` |
+| `--step` | Step size for immunity fraction | `0.01` |
 
 Each plot automatically saves:
 
