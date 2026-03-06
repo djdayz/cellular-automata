@@ -1,6 +1,92 @@
 # cellular-automata
 Cellular automata: Game of Life and SIRS
 
+# Game of Life (50×50, periodic boundary conditions)
+
+This project simulates **Game of Life** on a 2D square lattice with **periodic boundary conditions**. It includes:
+
+- animation of selected initial conditions
+- equilibration-time analysis from random initial conditions
+- glider centre-of-mass (COM) tracking and speed estimation
+- saving plots and corresponding data files
+
+The code is written in Python and uses **NumPy**, **Matplotlib**, and **Numba**.
+
+---
+
+## Features
+
+### 1. Animation
+The program can animate the Game of Life starting from:
+
+- a random initial condition
+- a blinker (oscillator)
+- a glider (moving pattern)
+- a beehive (still life / absorbing state)
+
+### 2. Equilibration study
+For random initial conditions, the code measures the number of active (alive) sites \(A(t)\) over time and defines an equilibration time \(t_{eq}\) as the first time at which \(A(t)\) remains constant for a chosen number of steps.
+
+It can then:
+
+- run many simulations
+- build a histogram of equilibration times
+- optionally show an example trace \(A(t)\)
+
+### 3. Glider centre of mass and speed
+Two glider analysis modes are included:
+
+- **`glider_com_stop`**  
+  Tracks the glider COM until it approaches a boundary, then fits straight lines to \(x_{COM}(t)\) and \(y_{COM}(t)\) to estimate velocity and speed.
+
+- **`glider_com_mod`**  
+  Tracks the glider COM continuously on the periodic lattice, producing sawtooth behaviour in time and a segmented wrapped trajectory.
+
+### 4. Output files
+For each plot, the program saves a corresponding **data file** and **image file** using filenames beginning with `gol_`.
+
+---
+
+## Command-line arguments
+
+### General arguments
+
+| Argument | Type | Default | Description |
+|---|---:|---:|---|
+| `--L` | int | `50` | Lattice size \(L \times L\) |
+| `--mode` | str | `equilibrate` | Run mode: `animate`, `equilibrate`, `glider_com_stop`, `glider_com_mod` |
+| `--seed` | int | `0` | Random seed |
+| `--outdir` | str | `gol_outputs` | Output directory for `gol_*` files |
+
+### Animation arguments
+
+| Argument | Type | Default | Description |
+|---|---:|---:|---|
+| `--init` | str | `glider` | Initial condition: `random`, `blinker`, `glider`, `beehive` |
+| `--steps` | int | `500` | Number of animation frames / steps |
+| `--interval` | int | `40` | Animation frame interval in ms |
+| `--density` | float | `0.20` | Random initial density (used when `--init random`) |
+
+### Equilibration-study arguments
+
+| Argument | Type | Default | Description |
+|---|---:|---:|---|
+| `--runs` | int | `500` | Number of random simulations |
+| `--max_steps` | int | `5000` | Maximum number of steps per run |
+| `--plateau_len` | int | `50` | Number of consecutive constant steps required for equilibrium |
+| `--bins` | int | `30` | Number of histogram bins |
+| `--example_trace` | flag | off | Also plot and save one example \(A(t)\) trace |
+
+### Glider COM arguments
+
+| Argument | Type | Default | Description |
+|---|---:|---:|---|
+| `--com_steps` | int | `500` | Number of steps used for glider COM tracking |
+| `--margin` | int | `3` | Boundary margin used in `glider_com_stop` mode |
+| `--glider_x` | int | `10` | Top-left x-position of the glider |
+| `--glider_y` | int | `10` | Top-left y-position of the glider |
+| `--no_com_plots` | flag | off | Disable COM plots |
+
 # SIRS Model Simulation
 
 This project simulates the **SIRS epidemic model** on a 2D square lattice with periodic boundary conditions using a **random sequential updating scheme**.
