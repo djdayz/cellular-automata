@@ -87,6 +87,8 @@ For each plot, the program saves a corresponding **data file** and **image file*
 | `--glider_y` | int | `10` | Top-left y-position of the glider |
 | `--no_com_plots` | flag | off | Disable COM plots |
 
+---
+
 # SIRS Model Simulation
 
 This project simulates the **SIRS epidemic model** on a 2D square lattice with periodic boundary conditions using a **random sequential updating scheme**.
