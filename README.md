@@ -53,6 +53,7 @@ When running in **Spyder**, these are defined inside `main()` using:
 
 ```python
 args = ap.parse_args([...])
+```
 
 General Arguments
 Argument	Description	Default
