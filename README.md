@@ -139,9 +139,8 @@ Used when `--mode immunity`.
 
 Each plot automatically saves:
 
-PNG plot
-
-CSV data file
+- PNG plot
+- CSV data file
 
 Example:
 
@@ -150,40 +149,4 @@ task3_phase.csv
 
 The CSV file contains the data used to generate the figure.
 
-Requirements
 
-Python packages required:
-
-numpy
-matplotlib
-numba
-
-Install with:
-
-pip install numpy matplotlib numba
-Example Runs
-
-Example arguments inside main().
-
-Phase diagram
-args = ap.parse_args([
-    "--mode", "phase",
-    "--step", "0.05",
-    "--equil", "100",
-    "--meas", "1000",
-    "--out", "task3_phase.png",
-])
-Variance cut
-args = ap.parse_args([
-    "--mode", "varcut",
-    "--step", "0.01",
-    "--equil", "100",
-    "--total", "10000",
-    "--block", "200",
-    "--out", "task4_varcut.png",
-])
-Immunity scan
-args = ap.parse_args([
-    "--mode", "immunity",
-    "--out", "task5_immunity.png",
-])
