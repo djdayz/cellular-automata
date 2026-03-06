@@ -1,7 +1,7 @@
 # cellular-automata
 Cellular automata: Game of Life and SIRS
 
-# Game of Life (50×50, periodic boundary conditions)
+# Game of Life (50×50, periodic boundary conditions), gameoflife.py
 
 This project simulates **Game of Life** on a 2D square lattice with **periodic boundary conditions**. It includes:
 
@@ -89,7 +89,7 @@ For each plot, the program saves a corresponding **data file** and **image file*
 
 ---
 
-# SIRS Model Simulation
+# SIRS Model Simulation, SIRS.py
 
 This project simulates the **SIRS epidemic model** on a 2D square lattice with periodic boundary conditions using a **random sequential updating scheme**.
 
